@@ -1,0 +1,14 @@
+/*
+    A tile with summarized information about an expense
+ */
+.expense-summary {
+    width: 150px;
+    height: 200px;
+
+    margin: 5px;
+    padding: 10px;
+    display: inline-block;
+
+    border-radius: 10px;
+    background-color: lightgray;
+}
