@@ -62,6 +62,49 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(function() {
+
+        });
+
+        function showExpenseSummaries() {
+            // getExpensesSummary();
+
+            var testData = {
+                "expenses": [
+                    {
+                        "id": "0",
+                        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/170px-ReceiptSwiss.jpg"
+                    },
+                    {
+                        "id": "1",
+                        "photo": "https://shoparooapp.zendesk.com/hc/article_attachments/115019176807/FAQ_CC_Stub.png"
+                    }
+                ]
+            };
+            x(JSON.stringify(testData), "success");
+        }
+
+        var x = function(data, status) {
+            if (status == "error") {
+                console.log(data); // TODO add more descriptive error
+                return;
+            }
+
+            var dataObj = JSON.parse(data);
+
+            var expenses = dataObj.expenses;
+
+            expenses.forEach(function(expense) {
+                var expenseSummary = $(document.createElement("div"))
+                .addClass("expense-summary")
+                .append("<p>" + expense.id + "</p>")
+                .append("<img src='" + expense.photo + "' alt='Expense summary " + expense.id + " width='100' height='200'></img>");
+                $("#content").append(expenseSummary);
+            });
+        }
+        </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -80,19 +123,8 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <button onclick="alert('you activated my incompetence!'); showExpenseSummaries()">Click me!</button>
+                <br/>
             </div>
         </div>
     </body>

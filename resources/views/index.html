@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" type="text/css" href="style/expensesummary.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        $(function() {
+
+        });
+
+        function showExpenseSummaries() {
+            // getExpensesSummary();
+
+            var testData = {
+                "expenses": [
+                    {
+                        "id": "0",
+                        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/170px-ReceiptSwiss.jpg"
+                    },
+                    {
+                        "id": "1",
+                        "photo": "https://shoparooapp.zendesk.com/hc/article_attachments/115019176807/FAQ_CC_Stub.png"
+                    }
+                ]
+            };
+            x(JSON.stringify(testData), "success");
+        }
+
+        var x = function(data, status) {
+            if (status == "error") {
+                console.log(data); // TODO add more descriptive error
+                return;
+            }
+
+            var dataObj = JSON.parse(data);
+
+            var expenses = dataObj.expenses;
+
+            expenses.forEach(function(expense) {
+                var expenseSummary = $(document.createElement("div"))
+                .addClass("expense-summary")
+                .append("<p>" + expense.id + "</p>")
+                .append("<img src='" + expense.photo + "' alt='Expense summary " + expense.id + " width='100' height='200'></img>");
+                $("#content").append(expenseSummary);
+            });
+        }
+        </script>
+
+        <title>CPSC 471 - Expense Manager</title>
+    </head>
+    <body>
+        <div id="navigation" style="height:100px; margin: 10px; background-color: green">
+
+        </div>
+        <div id="content">
+            <button onclick="showExpenseSummaries()">Click me!</button>
+            <br/>
+        </div>
+    </body>
+</html>
