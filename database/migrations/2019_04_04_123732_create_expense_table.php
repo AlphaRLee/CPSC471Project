@@ -17,6 +17,7 @@ class CreateExpenseTable extends Migration
             $table->bigIncrements('id');
             $table->float('amount')->nullable;
             $table->string('photo'); // File path to the photo taken
+            $table->string('status');
             $table->timestamps(); // Adds nullable 'created_at' and 'updated_at' fields
 
             $table->string('employee_ssn')->foreign('employee_ssn')->references('ssn')->on('employee');
