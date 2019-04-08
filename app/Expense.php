@@ -12,7 +12,7 @@ class Expense extends Model
     // public $timestamps = false; // Set whether a timestamp column exists or not
 
     protected $fillable = [
-        'photo', 'status', 'employee_ssn'
+        'photo', 'code_id', 'status', 'employee_ssn'
     ];
 
     public function expenseCode() {

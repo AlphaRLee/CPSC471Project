@@ -15,7 +15,7 @@ class CreateExpenseTable extends Migration
     {
         Schema::create('expense', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('amount')->nullable;
+            $table->float('amount')->nullable();
             $table->string('photo'); // File path to the photo taken
             $table->string('status');
             $table->timestamps(); // Adds nullable 'created_at' and 'updated_at' fields
