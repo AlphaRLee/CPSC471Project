@@ -14,4 +14,26 @@ class Expense extends Model
     protected $fillable = [
         'photo', 'status', 'employee_ssn'
     ];
+
+    public function expenseCode() {
+        // Get the expense code whose default ID (PK) matches the code_id (FK)
+        return $this->belongsTo('ExpenseCode', 'code_id');
+    }
+
+    public function employee() {
+        // Get the employee whose SSN (PK) matches the employee_ssn (FK) of this expense
+        return $this->belongsTo('Employee', 'employee_ssn', 'ssn');
+    }
+
+    public function secretary() {
+        return $this->belongsTo('Secretary', 'secretary_ssn', 'ssn');
+    }
+
+    public function manager() {
+        return $this->belongsTo('Manager', 'manager_ssn', 'ssn');
+    }
+
+    public function report() {
+        return $this->belongsTo('Report');
+    }
 }
