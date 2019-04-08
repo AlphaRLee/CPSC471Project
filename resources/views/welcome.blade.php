@@ -104,6 +104,17 @@
                 $("#content").append(expenseSummary);
             });
         }
+
+        function test() {
+            $.post("api/expense", {
+                photo: "receipt1",
+                code_id: 1,
+                ssn: 1
+            }, function(result) {
+                alert("test finished");
+                $("output").text(result.message);
+            });
+        }
         </script>
     </head>
     <body>
@@ -125,6 +136,8 @@
             <div class="content">
                 <button onclick="alert('you activated my incompetence!'); showExpenseSummaries()">Click me!</button>
                 <br/>
+                <button onclick="test()" type="button" name="button">Test</button>
+                <p id="output">Output here</p>
             </div>
         </div>
     </body>
