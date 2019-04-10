@@ -17,7 +17,7 @@ class CreateEmployeeTable extends Migration
             $table->string('ssn');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email');
+            // $table->string('email'); // Already controlled by the User table
             $table->date('dob');
             $table->string('gender', 10);
             $table->string('address');
