@@ -54,6 +54,11 @@ class EmployeeController extends Controller
                 ]);
     }
 
+    public function storePhoto(Request $request) {
+        $path = $request->file('photo')->store('photos');
+        return $path;
+    }
+
     /**
      * Display the specified resource.
      *

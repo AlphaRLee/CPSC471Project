@@ -19,3 +19,4 @@ use Illuminate\Http\Request;
 // });
 
 Route::post('expense', 'EmployeeController@store');
+Route::post('photo', 'EmployeeController@storePhoto');
