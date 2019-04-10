@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            // $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -23,8 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             // Used as reference to employee
-            $table->string('emplyee_id')->foreign('employee_id')->references('id')->on('employee');
-
+            $table->string('employee_ssn')->foreign('employee_ssn')->references('ssn')->on('employee');
         });
     }
 
