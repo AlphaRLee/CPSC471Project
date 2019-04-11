@@ -16,6 +16,6 @@ class Secretary extends Model
     ];
 
     public function employee() {
-        return Employee::find($this->ssn);
+        return Employee::where('ssn', $this->ssn)->first();
     }
 }

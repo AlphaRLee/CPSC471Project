@@ -7,6 +7,7 @@ use App\Expense;
 use App\Department;
 use App\Employee;
 use App\Secretary;
+use App\User;
 
 class SecretaryController extends Controller
 {
@@ -18,14 +19,20 @@ class SecretaryController extends Controller
     public function index()
     {
         // TODO add verification
-        $secretary = Auth::user()->secretary();
+        // $secretary = Auth::user()->secretary();
+        $secretary = Secretary::where('ssn', '222222222')->first();
         $departmentId = $secretary->employee()->department_id;
 
-        $submitters = Employee::where('department_id', '=', $departmentId)->value('ssn');
-        $expenses = Expense::whereIn('employee_ssn', $submitters);
+        $expenseSubmitters = Employee::where('department_id', '=', $departmentId)
+                ->join('expense', 'ssn', '=', 'employee_ssn')
+                ->join('expense_code', 'code_id', '=', 'expense_code.id')
+                ->get();
 
-        return view('secretarySummaries', [
-            'summaries' => $expenses
+        // dd($expenseSubmitters);
+
+        return view('summaries', [
+            'cardContent' => 'secretarySummaries',
+            'summaries' => $expenseSubmitters,
         ]);
     }
 
