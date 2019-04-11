@@ -21,11 +21,11 @@ class SecretaryController extends Controller
         $secretary = Auth::user()->secretary();
         $departmentId = $secretary->employee()->department_id;
 
-        $submitters = Employee::where('department_id', $departmentId);
-        // $expenses = 
+        $submitters = Employee::where('department_id', '=', $departmentId)->value('ssn');
+        $expenses = Expense::whereIn('employee_ssn', $submitters);
 
         return view('secretarySummaries', [
-            'summaries' =>
+            'summaries' => $expenses
         ]);
     }
 
