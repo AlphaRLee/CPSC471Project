@@ -21,7 +21,8 @@ class SecretaryController extends Controller
         $secretary = Auth::user()->secretary();
         $departmentId = $secretary->employee()->department_id;
 
-        $submitters = Employee:
+        $submitters = Employee::where('department_id', $departmentId);
+        // $expenses = 
 
         return view('secretarySummaries', [
             'summaries' =>
