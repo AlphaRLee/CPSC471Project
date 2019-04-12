@@ -8,6 +8,7 @@ use App\Department;
 use App\Employee;
 use App\Secretary;
 use App\User;
+use App\ExpenseStatus;
 
 class SecretaryController extends Controller
 {
@@ -26,9 +27,9 @@ class SecretaryController extends Controller
         $expenseSubmitters = Employee::where('department_id', '=', $departmentId)
                 ->join('expense', 'ssn', '=', 'employee_ssn')
                 ->join('expense_code', 'code_id', '=', 'expense_code.id')
+                ->orderByRaw('FIELD(status, "submitted", "processed", "approved", "reported", "rejected")')
+                ->latest()
                 ->get();
-
-        // dd($expenseSubmitters);
 
         return view('summaries', [
             'cardContent' => 'secretarySummaries',
