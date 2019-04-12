@@ -11,7 +11,7 @@ use App\Employee;
 use App\Manager;
 use App\User;
 use App\ExpenseStatus;
-
+use App\Report;
 
 class ManagerController extends Controller
 {
@@ -66,10 +66,7 @@ class ManagerController extends Controller
     public function index()
     {
         // TODO add verification
-        // $secretary = Auth::user()->secretary();
         $expenseSubmitters = $this->getExpenseInformation();
-
-        // dd($expenseSubmitters);
 
         return view('summaries', [
             'cardContent' => 'managerSummaries',
@@ -84,7 +81,7 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        //
+        // Unused
     }
 
     /**
@@ -95,7 +92,35 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $expenses = Expense::whereIn('id', $request->expenses)->get();
+
+        // Verify expenses
+        foreach($expenses as $expense) {
+            if ($expense->status === ExpenseStatus::SUBMITTED) {
+                return response()->json([
+                    'error' => 'One or more expense have not been processed.'
+                ], 400);
+            } else if ($expense->status === ExpenseStatus::REPORTED) {
+                return response()->json([
+                    'error' => 'One or more expense has already been reported.'
+                ], 400);
+            }
+        }
+
+        $report = Report::create([
+            'manager_ssn' => $request->managerSsn,
+            'financial_expert_ssn' => '909909001'
+        ]);
+
+        foreach($expenses as $expense) {
+            $expense->report_id = $report->id;
+            $expense->status = ExpenseStatus::REPORTED;
+            $expense->save();
+        }
+
+        return response()->json([
+            'message' => 'Success'
+        ]);
     }
 
     /**
@@ -106,7 +131,7 @@ class ManagerController extends Controller
      */
     public function show($id)
     {
-        //
+        // Unused
     }
 
     /**
@@ -165,6 +190,6 @@ class ManagerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Unused
     }
 }

@@ -80,6 +80,16 @@ function selectCard() {
     }
 }
 
-function submitReport() {
+function submitReport(url, ssn) {
+    const expenses = selectedCards.map(card => parseInt(card.expenseId));
+
+    $.post(url, {
+        '_token': $('meta[name=csrf-token]').attr('content'),
+        managerSsn: ssn,
+        expenses: expenses,
+    }, function(response) {
+        location.reload();
+    });
+
     disableSelectMode();
 }

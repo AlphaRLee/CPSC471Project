@@ -18,7 +18,8 @@ class CreateReportTable extends Migration
             $table->timestamps();
 
             $table->string('manager_ssn')->foreign('manager_ssn')->references('ssn')->on('manager');
-            $table->string('financial_expert_ssn')->foreign('financial_expert_ssn')->references('ssn')->on('financial_expert');
+            $table->string('financial_expert_ssn');
+            $table->foreign('financial_expert_ssn')->references('ssn')->on('financial_expert');
         });
     }
 
