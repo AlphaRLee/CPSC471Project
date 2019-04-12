@@ -1,6 +1,4 @@
-@if (false)
-<!-- <input type="hidden" name="secretarySsn" value="{{ Auth::user()->employee()->ssn }}"> -->
-@endif
+<input type="hidden" name="secretarySsn" value="{{ Auth::user()->employee_ssn }}">
 
 <div class="form-group row">
     <label for="amount" class="col-sm-3 col-form-label">Amount</label>
