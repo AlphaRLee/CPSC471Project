@@ -47,23 +47,7 @@
             <hr>
 
             @include('includes.' . $formContent)
-            <div class="form-group row">
-                <label for="description" class="col-sm-3 col-form-label">Description</label>
-                <div class="col-sm-9">
-                    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
-                </div>
-            </div>
-
-            <br>
-
-            <div class="row">
-                <div class="col-sm-6">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
-                </div>
-                <div class="col-sm-6 text-right">
-                    <input type="submit" class="btn btn-danger" name="reject" value="Reject">
-                </div>
-            </div>
+            
         </form>
         <br>
         <button type="button" class="btn btn-light" onclick="window.location.href = '{{ URL::previous() }}'">Back</button>

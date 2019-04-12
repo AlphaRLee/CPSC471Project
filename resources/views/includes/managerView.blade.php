@@ -1,9 +1,9 @@
-<input type="hidden" name="secretarySsn" value="{{ Auth::user()->employee_ssn }}">
+<input type="hidden" name="managerSsn" value="{{ Auth::user()->employee_ssn }}">
 
 <div class="form-group row">
     <label for="amount" class="col-sm-3 col-form-label">Amount</label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" id="amount" name="amount" value="" placeholder="0.00">
+        <input type="text" class="form-control" id="amount" name="amount" value="{{ $expense->amount }}" placeholder="0.00">
     </div>
 </div>
 <div class="form-group row">
@@ -17,7 +17,7 @@
 
 <div class="row">
     <div class="col-sm-6">
-        <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+        <input type="submit" class="btn btn-primary" name="submit" value="Approve">
     </div>
     <div class="col-sm-6 text-right">
         <input type="submit" class="btn btn-danger" name="reject" value="Reject">

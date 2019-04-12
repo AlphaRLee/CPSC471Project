@@ -118,8 +118,8 @@ class ManagerController extends Controller
     public function edit($id)
     {
         return view('expense', [
-            'formContent' => 'secretaryView',
-            'patchHref' => url('/expense/' . $id . '/secretary'),
+            'formContent' => 'managerView',
+            'patchHref' => url('/expense/' . $id . '/manager'),
             'expense' => $this->getExpenseInformation($id),
         ]);
     }
@@ -133,7 +133,28 @@ class ManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $expense = Expense::find($id);
+        if (is_null($expense)) {
+            // TODO Add error check here
+            dd($id);
+        }
+
+        $expense->manager_ssn = $request->input('managerSsn');
+        $expense->amount = $request->input('amount');
+        // $expense-input('description'); // TODO Restore when there's time
+
+        $submitted = $request->input('submit', null);
+        $rejected = $request->input('reject', null);
+        if (isset($submitted)) {
+            $expense->status = ExpenseStatus::APPROVED;
+        } else if (isset($rejected)) {
+            $expense->status = ExpenseStatus::REJECTED;
+        } else {
+            dd("Error, illegal state. Neither submitted nor rejected");
+        }
+
+        $expense->save();
+        return redirect()->back();
     }
 
     /**
