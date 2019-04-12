@@ -25,9 +25,7 @@ class SecretaryController extends Controller
      * @return the expense model with human-readable information
      */
     private function getExpenseInformation($expenseId = null) {
-        dd(Auth::user()->employee());
-
-        $secretary = Secretary::where('ssn', Auth::user()->employee()->ssn)->first();
+        $secretary = Secretary::where('ssn', Auth::user()->employee_ssn)->first();
         $departmentId = $secretary->employee()->department_id;
 
         $query = Employee::where('department_id', '=', $departmentId)
