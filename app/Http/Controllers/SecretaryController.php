@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Expense;
 use App\Department;
 use App\Employee;
@@ -12,6 +14,10 @@ use App\ExpenseStatus;
 
 class SecretaryController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /*
      * Get the information about the expense (e.g. who submitted it, what expense code, etc.)
      *
@@ -19,7 +25,9 @@ class SecretaryController extends Controller
      * @return the expense model with human-readable information
      */
     private function getExpenseInformation($expenseId = null) {
-        $secretary = Secretary::where('ssn', '222222222')->first();
+        dd(Auth::user()->employee());
+
+        $secretary = Secretary::where('ssn', Auth::user()->employee()->ssn)->first();
         $departmentId = $secretary->employee()->department_id;
 
         $query = Employee::where('department_id', '=', $departmentId)
@@ -110,12 +118,9 @@ class SecretaryController extends Controller
      */
     public function edit($id)
     {
-        // dd($this->getExpenseInformation($id));
-         // $x = $this->getExpenseInformation($id);
-         // dd($x);
-
         return view('expense', [
             'formContent' => 'secretaryView',
+            'patchHref' => url('/expense/' . $id . '/secretary'),
             'expense' => $this->getExpenseInformation($id),
         ]);
     }
@@ -129,7 +134,8 @@ class SecretaryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        return redirect()->back();
     }
 
     /**

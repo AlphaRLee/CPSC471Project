@@ -16,7 +16,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        // 'name', 'email', 'password',
+        'email', 'password', 'employee_ssn'
     ];
 
     /**
@@ -39,6 +40,6 @@ class User extends Authenticatable
 
     public function employee() {
         // Get the employee whose SSN (PK) matches the employee_ssn (FK) of this user
-        return $this->has('Employee', 'employee_ssn', 'ssn');
+        return $this->hasOne('App\Employee', 'employee_ssn', 'ssn');
     }
 }

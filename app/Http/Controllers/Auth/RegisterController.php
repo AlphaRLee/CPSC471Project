@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,7 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstName' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
+            'ssn' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -63,10 +66,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
+            // 'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'employee_ssn' => $data['ssn'],
         ]);
+
+/*
+        Employee::create([
+            'ssn' => $data['ssn'],
+            'first_name' => $data['firstName'],
+            'last_name' => $data['lastName'],
+
+            // FIXME Use real data
+            'dob' => '1970-01-01',
+            'gender' => 'male',
+            'address' => '24 Sussex Drive',
+            'postal_code' => 'a1a1a1',
+            'city' => 'Calgary',
+            'province' => 'Alberta',
+            'country' => 'Canada',
+            'department_id' => 1,
+
+            $table->string('gender', 10);
+            $table->string('address');
+            $table->string('postal_code', 7);
+            $table->string('city');
+            $table->string('province');
+            $table->string('country');
+
+            $table->bigInteger('department_id')->foreign('department_id')->references('id')->on('department');
+
+
+
+        ]);
+*/
+        return $user;
     }
 }
