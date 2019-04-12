@@ -11,4 +11,11 @@ class ExpenseCode extends Model
     // protected $keyType = 'string'; // Set type of primary key
     public $timestamps = false; // Set whether a timestamp column exists or not
 
+    public function expenses() {
+        return $this->hasMany('Expense', 'code_id');
+    }
+
+    public function departments() {
+        return $this->belongsToMany('Department', 'department_expense_code');
+    }
 }

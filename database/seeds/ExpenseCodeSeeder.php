@@ -14,43 +14,33 @@ class ExpenseCodeSeeder extends Seeder
     {
         $expenseCodes = [
             [
-                // 'id' => 1,
                 'description' => 'Food and Beverage'
             ],
             [
-                // 'id' => 2,
                 'description' => 'Gifts'
             ],
             [
-                // 'id' => 3,
                 'description' => 'Local Travel'
             ],
             [
-                // 'id' => 4,
                 'description' => 'Non-local Travel'
             ],
             [
-                // 'id' => 4,
                 'description' => 'Lodging'
             ],
             [
-                // 'id' => 5,
                 'description' => 'Vehicle and Gas Usage'
             ],
             [
-                // 'id' => 6,
                 'description' => 'Supplies'
             ],
             [
-                // 'id' => 7,
                 'description' => 'Equipment'
             ],
             [
-                // 'id' => 8,
                 'description' => 'Maintenance'
             ],
             [
-                // 'id' => 8,
                 'description' => 'Miscellanious'
             ],
         ];
