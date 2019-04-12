@@ -5,7 +5,7 @@
     <div class="row">
         @foreach ($summaries as $summary)
         <div class="col-md-3">
-            <div class="card">
+            <div id="card-{{ $summary->expense_id }}" class="card">
                 @include('includes.' . $cardContent)
             </div>
         </div>
@@ -13,5 +13,9 @@
 
     </div>
 </div>
+
+@if ($cardContent == 'managerSummaries')
+    @include('includes.managerSummariesFooter')
+@endif
 
 @endsection
