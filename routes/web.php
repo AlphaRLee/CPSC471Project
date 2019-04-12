@@ -28,6 +28,9 @@ Route::post('/summaries/manager', 'ManagerController@store'); // Endpoint for su
 Route::get('/expense/{id}/manager', 'ManagerController@edit');
 Route::patch('/expense/{id}/manager', 'ManagerController@update');
 
+Route::get('/summaries/financialexpert', 'FinancialExpertController@index');
+Route::get('/report/{id}', 'FinancialExpertController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
