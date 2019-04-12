@@ -20,6 +20,7 @@ Route::get('/', function () {
 // });
 
 Route::get('/summaries/secretary', 'SecretaryController@index');
+Route::get('/expense/{id}/secretary', 'SecretaryController@edit');
 
 Auth::routes();
 

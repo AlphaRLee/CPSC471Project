@@ -25,11 +25,18 @@ class SecretaryController extends Controller
         $departmentId = $secretary->employee()->department_id;
 
         $expenseSubmitters = Employee::where('department_id', '=', $departmentId)
-                ->join('expense', 'ssn', '=', 'employee_ssn')
-                ->join('expense_code', 'code_id', '=', 'expense_code.id')
-                ->orderByRaw('FIELD(status, "submitted", "processed", "approved", "reported", "rejected")')
+                ->join('expense', 'employee.ssn', '=', 'expense.employee_ssn')
+                ->join('expense_code', 'expense.code_id', '=', 'expense_code.id')
+                ->orderByRaw('FIELD(expense.status, "submitted", "processed", "approved", "reported", "rejected")')
                 ->latest()
+                ->select('expense.id as expense_id', 'expense.photo',
+                        'employee.first_name', 'employee.last_name',
+                        'expense.amount',
+                        'expense_code.description as expense_code_description',
+                        'expense.created_at as time', 'expense.status')
                 ->get();
+
+        // dd($expenseSubmitters);
 
         return view('summaries', [
             'cardContent' => 'secretarySummaries',
@@ -44,7 +51,7 @@ class SecretaryController extends Controller
      */
     public function create()
     {
-        //
+        // Unused
     }
 
     /**
@@ -55,7 +62,7 @@ class SecretaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Unused
     }
 
     /**
@@ -66,7 +73,7 @@ class SecretaryController extends Controller
      */
     public function show($id)
     {
-
+        // Unused
     }
 
     /**
@@ -77,7 +84,7 @@ class SecretaryController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
     }
 
     /**
