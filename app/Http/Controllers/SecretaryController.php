@@ -132,7 +132,28 @@ class SecretaryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        $expense = Expense::find($id);
+        // dd($expense);
+        if (is_null($expense)) {
+            // TODO Add error check here
+            dd($id);
+        }
+
+        $expense->secretary_ssn = $request->input('secretarySsn');
+        $expense->amount = $request->input('amount');
+        // $expense-input('description'); // TODO Restore when there's time
+
+        $submitted = $request->input('submit', null);
+        $rejected = $request->input('reject', null);
+        if (isset($submitted)) {
+            $expense->status = ExpenseStatus::PROCESSED;
+        } else if (isset($rejected)) {
+            $expense->status = ExpenseStatus::REJECTED;
+        } else {
+            dd("Error, illegal state. Neither submitted nor rejected");
+        }
+
+        $expense->save();
         return redirect()->back();
     }
 

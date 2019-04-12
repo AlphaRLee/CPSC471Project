@@ -64,10 +64,9 @@
                     <input type="submit" class="btn btn-danger" name="reject" value="Reject">
                 </div>
             </div>
-            <br>
-            <button type="button" class="btn btn-light" onclick="window.location.href = '{{ URL::previous() }}'">Back</button>
-
         </form>
+        <br>
+        <button type="button" class="btn btn-light" onclick="window.location.href = '{{ URL::previous() }}'">Back</button>
     </div>
 </div>
 
