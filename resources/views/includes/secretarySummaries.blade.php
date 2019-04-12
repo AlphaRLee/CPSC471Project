@@ -11,6 +11,6 @@
         <span class="font-weight-light" style="color: gray;">{{ date_format(DateTime::createFromFormat('Y-m-d H:i:s', $summary->time), "Y/m/d H:i") }}</span>
     </div>
     <div class="card-footer text-muted">
-        <span>Status: {{ $summary->status }}</span>
+        <span>Status: {{ ucfirst($summary->status) }}</span>
     </div>
 </a>
