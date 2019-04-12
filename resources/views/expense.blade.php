@@ -4,11 +4,7 @@
 <div class="row" style="max-width: 100%">
     <!-- The image -->
     <div class="col-md-8 text-center" style="background-color: #EEE;">
-        <!-- <div class="card"> -->
-            <!-- <div class="card-body"> -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/800px-ReceiptSwiss.jpg" alt="Receipt">
-            <!-- </div> -->
-        <!-- </div> -->
+        <img class="expense-img" src="{{ $expense->photo }}" alt="Receipt">
     </div>
     <!-- The information -->
     <div class="col-md-4" style="padding: 20px; background-color: white;">
@@ -47,7 +43,7 @@
             <hr>
 
             @include('includes.' . $formContent)
-            
+
         </form>
         <br>
         <button type="button" class="btn btn-light" onclick="window.location.href = '{{ URL::previous() }}'">Back</button>

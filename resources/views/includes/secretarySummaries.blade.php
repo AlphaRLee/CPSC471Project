@@ -2,7 +2,7 @@
 <!-- <img src="{{ asset('storage/' . $summary->photo) }}" alt=""> -->
 @endif
 <a href="{{ url('/expense/' . $summary->expense_id . '/secretary') }}">
-    <img class="card-img-top" src="https://cdn.discordapp.com/attachments/381941488151560192/565764463924609024/20190410_230513.jpg" alt="receipt">
+    <img class="card-img-top" src="{{ $summary->photo }}" alt="receipt">
     <div class="card-body">
         <span>Employee: {{ $summary->first_name }} {{ $summary->last_name }}</span>
         <br>
