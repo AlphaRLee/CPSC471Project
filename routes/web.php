@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/summaries/secretary', 'SecretaryController@index');
 Route::get('/expense/{id}/secretary', 'SecretaryController@edit');
+Route::patch('/expense/{id}/secretary', 'SecretaryController@update');
 
 Auth::routes();
 

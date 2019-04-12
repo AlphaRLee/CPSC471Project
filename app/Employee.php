@@ -18,14 +18,14 @@ class Employee extends Model
     ];
 
     public function user() {
-        return $this->belongsTo('User');
+        return $this->belongsTo('App\User');
     }
 
     public function expenses() {
-        return $this->hasMany('Expense');
+        return $this->hasMany('App\Expense');
     }
 
     public function department() {
-        return $this->belongsTo('Department');
+        return $this->belongsTo('App\Department');
     }
 }

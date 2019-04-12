@@ -15,32 +15,32 @@
         <br>
         <h4 class="mb-3">Expense {{ $expense->expense_id }}</h4>
         <hr>
-        <form class="" action="index.html" method="post">
+        <form class="" action="{{ $patchHref }}" method="post">
             @csrf
             @method('PATCH')
 
             <div class="form-group row">
                 <label for="employeeName" class="col-sm-3 col-form-label">Employee</label>
                 <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" id="employeeName" name="" value="{{ $expense->first_name}} {{ $expense->last_name }}">
+                    <input type="text" readonly class="form-control-plaintext" id="employeeName" value="{{ $expense->first_name}} {{ $expense->last_name }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="submitted" class="col-sm-3 col-form-label">Submitted</label>
                 <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" id="submitted" name="" value="{{ date_format(DateTime::createFromFormat('Y-m-d H:i:s', $expense->time), "Y/m/d H:i") }}">
+                    <input type="text" readonly class="form-control-plaintext" id="submitted" value="{{ date_format(DateTime::createFromFormat('Y-m-d H:i:s', $expense->time), "Y/m/d H:i") }}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="expenseCodeDescription" class="col-sm-3 col-form-label">Expense Code</label>
                 <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" id="expenseCodeDescription" name="" value="{{ $expense->expense_code_description}}">
+                    <input type="text" readonly class="form-control-plaintext" id="expenseCodeDescription" value="{{ $expense->expense_code_description}}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="status" class="col-sm-3 col-form-label">Status</label>
                 <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" id="employeeName" name="" value="{{ ucfirst($expense->status)}}">
+                    <input type="text" readonly class="form-control-plaintext" id="employeeName"value="{{ ucfirst($expense->status)}}">
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <label for="description" class="col-sm-3 col-form-label">Description</label>
                 <div class="col-sm-9">
-                    <textarea class="form-control" id="description" rows="4"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                 </div>
             </div>
 
