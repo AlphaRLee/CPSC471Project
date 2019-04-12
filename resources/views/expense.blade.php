@@ -46,12 +46,7 @@
 
             <hr>
 
-            <div class="form-group row">
-                <label for="amount" class="col-sm-3 col-form-label">Amount</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="amount" name="" value="" placeholder="0.00">
-                </div>
-            </div>
+            @include('includes.' . $formContent)
             <div class="form-group row">
                 <label for="description" class="col-sm-3 col-form-label">Description</label>
                 <div class="col-sm-9">
@@ -69,6 +64,8 @@
                     <input type="submit" class="btn btn-danger" name="reject" value="Reject">
                 </div>
             </div>
+            <br>
+            <button type="button" class="btn btn-light" onclick="window.location.href = '{{ URL::previous() }}'">Back</button>
 
         </form>
     </div>

@@ -115,6 +115,7 @@ class SecretaryController extends Controller
          // dd($x);
 
         return view('expense', [
+            'formContent' => 'secretaryView',
             'expense' => $this->getExpenseInformation($id),
         ]);
     }
