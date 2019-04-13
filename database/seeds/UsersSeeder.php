@@ -13,7 +13,7 @@ class UsersSeeder extends Seeder
     {
         $users = [
             [
-                'email' => 'joe.bob@test.com',
+                'email' => 'john.smith@test.com',
                 'password' => '$10$a7kbTCnFN0toYiFBM2UhS.IKC4rG2UxDLCRWkVNdALa0rgZnwJEK2',
                 'employee_ssn' => '101101001'
             ],

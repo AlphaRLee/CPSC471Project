@@ -1,0 +1,5 @@
+id,email,email_verified_at,password,remember_token,created_at,updated_at,employee_ssn
+1,joe.bob@test.com,NULL,$2y$10$oH5R5z.DWHuktlTqWYwa1e390gHNBnXcwNuIwDbPGXc.WDjOTScmG,NULL,"2019-04-12 11:55:23","2019-04-12 11:55:23",101101001
+2,jane.doe@test.com,NULL,$2y$10$a7kbTCnFN0toYiFBM2UhS.IKC4rG2UxDLCRWkVNdALa0rgZnwJEK2,NULL,"2019-04-12 11:58:39","2019-04-12 11:58:39",101101002
+3,jack.jones@test.com,NULL,$2y$10$apK566epsNeDR.l33bZX0e5/FJ3MYcQUbgT1uIjPZyITYRQzucz3K,NULL,"2019-04-12 15:36:31","2019-04-12 15:36:31",101101003
+4,frank.eves@test.com,NULL,$2y$10$apK566epsNeDR.l33bZX0e5/FJ3MYcQUbgT1uIjPZyITYRQzucz3K,NULL,"2019-04-12 15:36:31","2019-04-12 15:36:31",909909001

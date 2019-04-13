@@ -1,0 +1,5 @@
+id,amount,photo,status,created_at,updated_at,employee_ssn,code_id,secretary_ssn,manager_ssn,report_id
+1,54.54,https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/800px-ReceiptSwiss.jpg,reported,"2019-04-01 12:00:00","2019-04-12 21:39:50",101101001,1,101101002,101101003,4
+2,NULL,http://s25048.pcdn.co/wp-content/uploads/2016/06/Register_Receipt.jpg,submitted,"2019-04-01 12:00:00","2019-04-12 19:43:44",101101003,2,NULL,NULL,NULL
+3,39.41,https://cdn.discordapp.com/attachments/381941488151560192/565764463924609024/20190410_230513.jpg,reported,"2019-04-12 19:29:58","2019-04-12 21:39:50",101101002,3,101101002,101101003,4
+4,NULL,https://media-cdn.tripadvisor.com/media/photo-s/0d/0b/fe/1f/receipt.jpg,submitted,"2019-04-13 12:30:00","2019-04-13 12:30:00",101101001,1,NULL,NULL,NULL
