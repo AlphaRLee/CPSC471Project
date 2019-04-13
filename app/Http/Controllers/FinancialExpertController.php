@@ -62,27 +62,6 @@ class FinancialExpertController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -98,46 +77,19 @@ class FinancialExpertController extends Controller
                     'first_name', 'last_name',
                     'expense.created_at as time',
                     'expense_code.description as expense_code_description',
+                    'department.name as department_name',
                     'expense.amount'
-        );
+                    );
         $expenses = $query->get();
 
+        $sum = 0;
+        foreach ($expenses as $expense) {
+            $sum += $expense->amount;
+        }
+
         return view('report', [
-            'expenses' => $expenses
+            'expenses' => $expenses,
+            'sum' => $sum,
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

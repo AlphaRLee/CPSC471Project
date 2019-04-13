@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/summaries/secretary';
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,30 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function redirectTo() {
+        if (Auth::user() == null) {
+            return 'auth/login';
+        }
+        $ssn = Auth::user()->employee_ssn;
+
+        $roles = [
+            [ 'table' => 'manager', 'link' => 'manager' ],
+            [ 'table' => 'secretary', 'link' => 'secretary' ],
+            [ 'table' => 'financial_expert', 'link' => 'financialexpert' ],
+        ];
+
+        foreach ($roles as $role) {
+            if (DB::table($role['table'])->where('ssn', $ssn)->first() !== null) {
+                return '/summaries/' . $role['link'];
+            }
+        }
+
+        return '/home';
+    }
+
+    public function viewRedirectTo() {
+        return view($this->redirectTo());
     }
 }

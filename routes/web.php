@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
-
-// Route::get('/summaries/secretary', function() {
-//     return view('secretarySummaries');
+// Route::get('/', function () {
+//     return view('auth/login');
 // });
+
+Route::get('/', 'Auth\LoginController@viewRedirectTo');
 
 Route::get('/summaries/secretary', 'SecretaryController@index');
 Route::get('/expense/{id}/secretary', 'SecretaryController@edit');

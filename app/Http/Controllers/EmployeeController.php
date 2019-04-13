@@ -40,6 +40,11 @@ class EmployeeController extends Controller
     {
         // TODO: Add validation
 
+        return response()
+        ->json([
+            'message' => "successfully sent photo"
+        ]);
+
         $expense = Expense::create([
             'photo' => $request->photo,
             'status' => ExpenseStatus::SUBMITTED,

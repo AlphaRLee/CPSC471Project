@@ -4,19 +4,22 @@
 <div class="container" style="margin: 10%">
     <div class="row">
         <div class="col-md-2">
-            <p>Expense ID</p>
+            <p><b>Expense ID</b></p>
         </div>
         <div class="col-md-2">
-            <p>Submitter</p>
+            <p><b>Submitter</b></p>
         </div>
         <div class="col-md-2">
-            <p>Date</p>
+            <p><b>Date</b></p>
         </div>
         <div class="col-md-2">
-            <p>Expense Code</p>
+            <p><b>Expense Code</b></p>
         </div>
         <div class="col-md-2">
-            <p>Amount</p>
+            <p><b>Department</b></p>
+        </div>
+        <div class="col-md-2">
+            <p><b>Amount</b></p>
         </div>
     </div>
     <hr>
@@ -35,11 +38,34 @@
             <p>{{ $expense->expense_code_description }}</p>
         </div>
         <div class="col-md-2">
+            <p>{{ $expense->department_name }}</p>
+        </div>
+        <div class="col-md-2">
             <p>{{ $expense->amount }}</p>
         </div>
     </div>
     <hr>
     @endforeach
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-2">
+            <p> <b>Total</b> </p>
+        </div>
+        <div class="col-md-2">
+            <p><b>{{ $sum }}</b></p>
+        </div>
+    </div>
 </div>
 
 
