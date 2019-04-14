@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container" style="margin: 10%">
+    <button type="button" class="btn btn-light" onclick="window.location.href = '{{ URL::previous() }}'">Back</button>
+    <br>
+    <br>
     <div class="row">
         <div class="col-md-2">
             <p><b>Expense ID</b></p>

@@ -179,7 +179,7 @@ class ManagerController extends Controller
         }
 
         $expense->save();
-        return redirect()->back();
+        return redirect('/summaries/manager');
     }
 
     /**
