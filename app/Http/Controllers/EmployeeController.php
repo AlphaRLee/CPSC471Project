@@ -38,13 +38,6 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: Add validation
-
-        return response()
-        ->json([
-            'message' => "successfully sent photo"
-        ]);
-
         $expense = Expense::create([
             'photo' => $request->photo,
             'status' => ExpenseStatus::SUBMITTED,
@@ -55,7 +48,7 @@ class EmployeeController extends Controller
 
         return response()
                 ->json([
-                    'message' => 'Success! Hello world'
+                    'message' => 'Successfully submitted'
                 ]);
     }
 

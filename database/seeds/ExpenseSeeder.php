@@ -31,6 +31,21 @@ class ExpenseSeeder extends Seeder
             'http://4.bp.blogspot.com/-PjDG1C17gZU/T6EuocgcdPI/AAAAAAAAEUo/iFON3DJxAiI/s1600/DSC01715.JPG',
         ];
 
+        // Some static guaruntees
+        Expense::create([
+            'employee_ssn' => '101101001',
+            'code_id'=> 1,
+            'status' => ExpenseStatus::SUBMITTED,
+            'photo' =>  'http://cdn.arn.com.au/media/8341540/subway-receipt.jpg?width=339px&height=522px',
+        ]);
+
+        Expense::create([
+            'employee_ssn' => '101101003',
+            'code_id'=> 1,
+            'status' => ExpenseStatus::PROCESSED,
+            'photo' =>  'https://s3-media3.fl.yelpcdn.com/bphoto/sMazOH7A9Vf10FBeHKVDFg/ls.jpg',
+        ]);
+
         for ($i = 0; $i < 20; $i++) {
             $employeeIndex = mt_rand(1, count($employees) - 1);
             $expenseCodeIndex = mt_rand(1, count($expenseCodes) - 1);
